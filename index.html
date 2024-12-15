@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            z-index: 10;
+        }
+        h1 {
+            font-size: 4em;
+            color: #fff;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+            animation: pulse 2s infinite;
+        }
+        p {
+            font-size: 1.5em;
+            color: #fff;
+            margin-top: 10px;
+            animation: fadeIn 2s ease-in-out;
+        }
+        .confetti {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .confetti div {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: fall 3s linear infinite, rotate 2s linear infinite;
+        }
+        .balloons {
+            position: absolute;
+            bottom: -100px;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+        .balloons div {
+            position: absolute;
+            width: 50px;
+            height: 70px;
+            background: radial-gradient(circle at 50% 40%, #ffd700, #ff8c00);
+            border-radius: 50%;
+            animation: float 5s ease-in-out infinite;
+        }
+        @keyframes fall {
+            from {
+                transform: translateY(-50px);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-200px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="confetti"></div>
+    <div class="balloons"></div>
+    <div class="container">
+        <h1>Happy Birthday Thái SơN!</h1>
+        <p>Chúc bạn một ngày sinh nhật thật tuyệt vời! 🎉</p>
+    </div>
+    <script>
+        function createConfetti() {
+            const confettiContainer = document.querySelector('.confetti');
+            for (let i = 0; i < 150; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.animationDelay = Math.random() * 3 + 's';
+                confetti.style.background = `hsl(${Math.random() * 360}, 100%, 70%)`;
+                confettiContainer.appendChild(confetti);
+            }
+        }
+
+        function createBalloons() {
+            const balloonContainer = document.querySelector('.balloons');
+            for (let i = 0; i < 10; i++) {
+                const balloon = document.createElement('div');
+                balloon.style.left = Math.random() * 90 + '%';
+                balloon.style.animationDelay = Math.random() * 2 + 's';
+                balloonContainer.appendChild(balloon);
+            }
+        }
+
+        createConfetti();
+        createBalloons();
+    </script>
+</body>
+</html>
